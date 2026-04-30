@@ -1,0 +1,47 @@
+{
+  "name": "io.github.bowenerchen/cipherhub",
+  "description": "Production-grade cryptography toolkit - 31 MCP tools covering AES, RSA, ECC, SM2/SM3/SM4/SM9, ZUC, ML-KEM, ML-DSA, and hybrid KEX. Certified with AWS KMS (64/64) and Tencent Cloud KMS (39/39).",
+  "version": "1.9.4",
+  "repository": {
+    "url": "https://github.com/bowenerchen/CipherHUB-MCP-Server",
+    "type": "git",
+    "source": "https://github.com/bowenerchen/CipherHUB-MCP-Server"
+  },
+  "transport": {
+    "type": "http",
+    "url": "https://tools.cipherhub.cloud/cipherhub/mcp"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true
+  },
+  "tools_count": 31,
+  "resources_count": 5,
+  "prompts_count": 6,
+  "author": {
+    "name": "Yang X. CHEN",
+    "url": "https://cipherhub.cloud"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cryptography",
+    "mcp",
+    "aes",
+    "rsa",
+    "ecc",
+    "sm2",
+    "sm3",
+    "sm4",
+    "ml-kem",
+    "ml-dsa",
+    "post-quantum",
+    "kms",
+    "security"
+  ],
+  "links": {
+    "web-ui": "https://tools.cipherhub.cloud",
+    "openapi": "https://tools.cipherhub.cloud/.well-known/openapi.yaml",
+    "llms-txt": "https://tools.cipherhub.cloud/llms.txt"
+  }
+}
