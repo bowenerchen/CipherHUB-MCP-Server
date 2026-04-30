@@ -1,24 +1,27 @@
 name: Publish to MCP Registry
 
 on:
-  release:
-    types: [published]
+  push:
+    tags: ["v*"]  # Triggers on version tags like v1.0.0
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write  # Required for OIDC
+      id-token: write  # Required for OIDC authentication
       contents: read
-    
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-      
-      - name: Publish to MCP Registry
-        uses: modelcontextprotocol/publish-mcp@v1
-        with:
-          server-json: ./server.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz mcp-publisher
+
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish server to MCP Registry
+        run: ./mcp-publisher publish
