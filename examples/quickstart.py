@@ -103,10 +103,14 @@ def main():
         print(f"  - {r['uri']}: {r['name']}")
     
     # 2. List tools
+    # Server-side descriptions are written in Chinese; print the English
+    # category tag embedded at the start of each description instead.
     print("\n[2] Available Tools (first 10):")
     tools = client.list_tools()
     for t in tools[:10]:
-        print(f"  - {t['name']}: {t.get('description', '')[:50]}...")
+        desc = t.get("description", "")
+        tag = desc[1:desc.find("]")] if desc.startswith("[") and "]" in desc else "uncategorized"
+        print(f"  - {t['name']} [{tag}]")
     print(f"  ... and {len(tools) - 10} more tools")
     
     # 3. Compute SHA-256 hash
