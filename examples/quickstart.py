@@ -113,10 +113,10 @@ def main():
     print("\n[3] Compute SHA-256 Hash:")
     result = client.call_tool("hash_sum", {
         "plain_in_hex": "48656c6c6f20576f726c64",  # "Hello World" in hex
-        "required_hash_modes": ["SHA256"]
+        "required_hash_modes": ["Sha256"]
     })
     print(f"  Input: 48656c6c6f20576f726c64 ('Hello World')")
-    print(f"  SHA-256: {result.get('Results', {}).get('SHA256', {}).get('hash_sum_in_hex', 'N/A')}")
+    print(f"  SHA-256: {result.get('Results', {}).get('Sha256', {}).get('hash_sum_in_hex', 'N/A')}")
     
     # 4. Generate random bytes
     print("\n[4] Generate Random Bytes:")

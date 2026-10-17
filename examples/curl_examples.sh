@@ -63,7 +63,7 @@ curl -s -X POST "$MCP_ENDPOINT" \
       "name":"hash_sum",
       "arguments":{
         "plain_in_hex":"48656c6c6f20576f726c64",
-        "required_hash_modes":["SHA256"]
+        "required_hash_modes":["Sha256"]
       }
     },
     "id":3
@@ -74,7 +74,7 @@ content = data.get('result', {}).get('content', [])
 if content:
     text = content[0].get('text', '{}')
     result = json.loads(text)
-    sha256 = result.get('Results', {}).get('SHA256', {})
+    sha256 = result.get('Results', {}).get('Sha256', {})
     print(f\"SHA-256: {sha256.get('hash_sum_in_hex', 'N/A')}\")
 "
 
@@ -128,33 +128,33 @@ if contents:
 
 # 6. Compute HMAC-SHA256
 echo -e "\n${GREEN}[6] Compute HMAC-SHA256${NC}"
-echo "Input: 'message' with key 'secret'"
-MESSAGE_HEX=$(echo -n "message" | xxd -p | tr -d '\n')
-KEY_HEX=$(echo -n "secret" | xxd -p | tr -d '\n')
+echo "Input: 'message' (hex: 6d657373616765) with a 32-byte key"
+# Tip: convert any text to hex with:  echo -n "message" | xxd -p | tr -d '\n'
+# Keys must meet the length constraints in the hmac_sum schema (32 bytes here)
 curl -s -X POST "$MCP_ENDPOINT" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
-  -d "{
-    \"jsonrpc\":\"2.0\",
-    \"method\":\"tools/call\",
-    \"params\":{
-      \"name\":\"hmac_sum\",
-      \"arguments":{
-        \"plain_in_hex\":\"$MESSAGE_HEX\",
-        \"key_in_hex\":\"$KEY_HEX\",
-        \"required_hash_modes\":[\"SHA256\"]
+  -d '{
+    "jsonrpc":"2.0",
+    "method":"tools/call",
+    "params":{
+      "name":"hmac_sum",
+      "arguments":{
+        "plain_in_hex":"6d657373616765",
+        "key_in_hex":"0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "required_hash_modes":["Sha256"]
       }
     },
-    \"id\":6
-  }" | python3 -c "
+    "id":6
+  }' | python3 -c "
 import sys, json
 data = json.load(sys.stdin)
 content = data.get('result', {}).get('content', [])
 if content:
     text = content[0].get('text', '{}')
     result = json.loads(text)
-    hmac = result.get('Results', {}).get('SHA256', {})
-    print(f\"HMAC-SHA256: {hmac.get('hmac_in_hex', 'N/A')}\")
+    hmac = result.get('Results', {}).get('Sha256', {})
+    print(f\"HMAC-SHA256: {hmac.get('hmac_sum_in_hex', 'N/A')}\")
 "
 
 echo -e "\n${CYAN}========================================${NC}"
