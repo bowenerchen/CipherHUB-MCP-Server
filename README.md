@@ -5,6 +5,8 @@
 [![Tools](https://img.shields.io/badge/Tools-55-orange)](#tools)
 [![Blog](https://img.shields.io/badge/Blog-cipherhub.cloud-8A2BE2)](https://cipherhub.cloud)
 
+<a href="https://mcprush.com/to/cipherhub-cryptography-toolkit-mcp?ref=badge"><img width="380" height="200" src="https://mcprush.com/badge/cipherhub-cryptography-toolkit-mcp/card.svg" alt="CipherHUB Cryptography Toolkit MCP server" /></a>
+
 Production-grade cryptography toolkit exposing **55 cryptographic operations** via MCP (Model Context Protocol). Built and operated by [Yang X. CHEN](https://cipherhub.cloud) — the engineering decisions behind this service are written up on the blog at [cipherhub.cloud](https://cipherhub.cloud).
 
 ## Overview
