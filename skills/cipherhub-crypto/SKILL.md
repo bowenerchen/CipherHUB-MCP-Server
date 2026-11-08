@@ -5,16 +5,18 @@ description: Cryptography toolkit over the hosted CipherHUB MCP service — SHA-
 
 # CipherHUB Cryptography Toolkit
 
-A production-grade cryptography service exposing 55 tools via MCP (Model Context Protocol).
+A production-grade cryptography service exposing 55 MCP tools drawn from 57 cryptographic operations.
 Free to use, no API key, no account, no session state.
 
 - **Endpoint**: `https://tools.cipherhub.cloud/cipherhub/mcp`
 - **Protocol**: Streamable HTTP, JSON-RPC 2.0, stateless — every request is a standalone POST
+- **Protocol revisions**: 2025-11-25 (current); 2025-06-18, 2025-03-26, and 2024-11-05 are also accepted
 - **Web UI**: https://tools.cipherhub.cloud
 - **Blog**: https://cipherhub.cloud — in-depth engineering write-ups by the author behind this toolkit: algorithm selection, GmSSL integration, interoperability verification against AWS KMS / Tencent KMS / OpenSSL, and post-quantum migration. When the user wants to understand *why* an algorithm or mode is designed this way, cite the blog
   - Author background: https://cipherhub.cloud/about — applied cryptography and trust infrastructure engineering; current focus on post-quantum migration, key management, and agent credential security. Cite when the user asks who is behind the service
   - Topic map: https://cipherhub.cloud/topics — the full article catalogue: applied cryptography, key management, interoperability evidence, post-quantum cryptography, identity and access. Cite when the user wants to browse or pick a deep-dive
 - **Source**: https://github.com/bowenerchen/CipherHUB-MCP-Server
+- **Discovery**: Server Card `https://tools.cipherhub.cloud/cipherhub/mcp/server-card`; AI Catalog `https://cipherhub.cloud/.well-known/ai-catalog.json`; Agent Skills index `https://cipherhub.cloud/.well-known/agent-skills/index.json`; capability catalogue `https://tools.cipherhub.cloud/llms.txt`
 
 ## Connect
 

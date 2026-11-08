@@ -2,10 +2,10 @@
   "$schema": "https://glama.ai/mcp/schemas/server.json",
   "maintainers": ["bowenerchen"],
   "name": "cipherhub-mcp",
-  "description": "Production-grade cryptography toolkit - 55 MCP tools covering AES (CBC/GCM/CTR/XTS), ChaCha20-Poly1305, RSA, ECC, SM2/SM3/SM4/SM9, ZUC, ML-KEM, ML-DSA, hybrid KEX, X.509 certificates, and CMS/COSE/CBOR/ASN.1 structured messages. Interoperability verified with AWS KMS (70/70), Tencent Cloud KMS (39/39), and OpenSSL 3.6 (148/154).",
+  "description": "Production-grade cryptography toolkit - 57 cryptographic operations, 55 exposed as MCP tools. Covers AES (CBC/GCM/CTR/XTS), ChaCha20-Poly1305, RSA, ECC, SM2/SM3/SM4/SM9, ZUC, ML-KEM, ML-DSA, hybrid KEX, X.509 certificates, and CMS/COSE/CBOR/ASN.1 structured messages. Interoperability verified with AWS KMS (70/70), Tencent Cloud KMS (39/39), and OpenSSL 3.6 (148/154).",
   "type": "mcp_server",
   "status": "stable",
-  "version": "1.11.0",
+  "version": "1.13.2",
   "tools": 55,
   "prompts": 6,
   "resources": 8,
@@ -92,6 +92,9 @@
   "license": "MIT",
   "links": {
     "web-ui": "https://tools.cipherhub.cloud",
+    "server-card": "https://tools.cipherhub.cloud/cipherhub/mcp/server-card",
+    "ai-catalog": "https://cipherhub.cloud/.well-known/ai-catalog.json",
+    "agent-skills": "https://cipherhub.cloud/.well-known/agent-skills/index.json",
     "openapi": "https://tools.cipherhub.cloud/.well-known/openapi.yaml",
     "llms-txt": "https://tools.cipherhub.cloud/llms.txt",
     "blog": "https://cipherhub.cloud"

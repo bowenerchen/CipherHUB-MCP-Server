@@ -1,7 +1,7 @@
 {
   "name": "cipherhub",
-  "description": "Production-grade cryptography toolkit exposing 55 cryptographic operations via MCP. Covers classical algorithms (AES CBC/GCM/CTR/XTS, ChaCha20-Poly1305, RSA, ECC, SHA-2, SHAKE), Chinese national standards (SM2, SM3, SM4, ZUC, SM9 identity-based cryptography), post-quantum cryptography (ML-KEM FIPS 203, ML-DSA FIPS 204, X25519+ML-KEM-768 hybrid KEX), X.509 certificate handling, and structured crypto messages (CMS, COSE, CBOR, ASN.1/DER). Interoperability verified against AWS KMS (70/70), Tencent Cloud KMS (39/39), and OpenSSL 3.6 (148/154).",
-  "version": "1.11.0",
+  "description": "Production-grade cryptography toolkit exposing 57 cryptographic operations through REST API and Web UI, 55 of them as MCP tools. Covers classical algorithms (AES CBC/GCM/CTR/XTS, ChaCha20-Poly1305, RSA, ECC, SHA-2, SHAKE), Chinese national standards (SM2, SM3, SM4, ZUC, SM9 identity-based cryptography), post-quantum cryptography (ML-KEM FIPS 203, ML-DSA FIPS 204, X25519+ML-KEM-768 hybrid KEX), X.509 certificate handling, and structured crypto messages (CMS, COSE, CBOR, ASN.1/DER). Interoperability verified against AWS KMS (70/70), Tencent Cloud KMS (39/39), and OpenSSL 3.6 (148/154).",
+  "version": "1.13.2",
   "transport": {
     "type": "streamable-http",
     "url": "https://tools.cipherhub.cloud/cipherhub/mcp"
@@ -115,6 +115,9 @@
   ],
   "links": {
     "web-ui": "https://tools.cipherhub.cloud",
+    "server-card": "https://tools.cipherhub.cloud/cipherhub/mcp/server-card",
+    "ai-catalog": "https://cipherhub.cloud/.well-known/ai-catalog.json",
+    "agent-skills": "https://cipherhub.cloud/.well-known/agent-skills/index.json",
     "openapi": "https://tools.cipherhub.cloud/.well-known/openapi.yaml",
     "llms-txt": "https://tools.cipherhub.cloud/llms.txt",
     "blog": "https://cipherhub.cloud"

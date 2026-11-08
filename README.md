@@ -1,13 +1,13 @@
 # CipherHUB MCP Server
 
 [![MCP](https://img.shields.io/badge/MCP-Server-blue)](https://tools.cipherhub.cloud/cipherhub/mcp)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/license/mit)
 [![Tools](https://img.shields.io/badge/Tools-55-orange)](#tools)
 [![Blog](https://img.shields.io/badge/Blog-cipherhub.cloud-8A2BE2)](https://cipherhub.cloud)
 
 <a href="https://mcprush.com/to/cipherhub-cryptography-toolkit-mcp?ref=badge"><img width="380" height="200" src="https://mcprush.com/badge/cipherhub-cryptography-toolkit-mcp/card.svg" alt="CipherHUB Cryptography Toolkit MCP server" /></a>
 
-Production-grade cryptography toolkit exposing **55 cryptographic operations** via MCP (Model Context Protocol). Built and operated by [Yang X. CHEN](https://cipherhub.cloud) — the engineering decisions behind this service are written up on the blog at [cipherhub.cloud](https://cipherhub.cloud).
+Production-grade cryptography toolkit exposing **55 MCP tools** drawn from **57 cryptographic operations** available through the REST API and Web UI. Built and operated by [Yang X. CHEN](https://cipherhub.cloud) — the engineering decisions behind this service are written up on the blog at [cipherhub.cloud](https://cipherhub.cloud).
 
 ## Overview
 
@@ -29,10 +29,11 @@ https://tools.cipherhub.cloud/cipherhub/mcp
 
 ### Protocol
 
-- **Type**: Streamable HTTP (MCP protocol revision 2025-03-26)
+- **Type**: Streamable HTTP
+- **Protocol revisions**: 2025-11-25 (current); 2025-06-18, 2025-03-26, and 2024-11-05 are also accepted
 - **Format**: JSON-RPC 2.0
 - **Stateless**: No session, no handshake, no API key — every request is a standalone POST
-- **Deployed version**: 1.11.0
+- **Deployed version**: 1.13.2
 
 ### Example: Call a Tool
 
@@ -71,6 +72,21 @@ The tool payload is a JSON string inside `result.content[0].text`:
 Note the conventions: binary input and output travel as hex strings (`*_in_hex` fields), and algorithm names use TitleCase enum values (`Sha384`, `Sm3`) — `SHA-384` is rejected by the schema.
 
 More runnable examples: [examples/curl_examples.sh](examples/curl_examples.sh) and [examples/quickstart.py](examples/quickstart.py) (Python stdlib only).
+
+## Discovery
+
+Machine-readable metadata for agents, crawlers, and registries:
+
+| Resource | Location |
+|----------|----------|
+| MCP Server Card | `https://tools.cipherhub.cloud/cipherhub/mcp/server-card` (`application/mcp-server-card+json`) |
+| AI Catalog | `https://cipherhub.cloud/.well-known/ai-catalog.json` |
+| Agent Skills index | `https://cipherhub.cloud/.well-known/agent-skills/index.json` |
+| Capability description | `https://tools.cipherhub.cloud/llms.txt` |
+| OpenAPI 3.1 | `https://tools.cipherhub.cloud/.well-known/openapi.yaml` |
+| Registry manifest | [`server.json`](server.json) — namespace `io.github.bowenerchen/cipherhub` |
+
+The Server Card publishes identity, version, transport, and supported protocol revisions. It does not enumerate tools, prompts, or resources; fetch those at runtime with `tools/list`, `prompts/list`, and `resources/list`.
 
 ## Tools
 
@@ -202,11 +218,28 @@ Six ready-made agent workflows served via `prompts/list`:
 
 ## Agent Skill
 
-A ready-to-use Agent Skills package lives in [`skills/cipherhub-crypto/`](skills/cipherhub-crypto/SKILL.md). It teaches any SKILL.md-compatible agent (Claude Code and others) when to reach for CipherHUB and how to call it — either by registering the MCP server or with plain HTTP. Install:
+A ready-to-use Agent Skills package lives in [`skills/cipherhub-crypto/`](skills/cipherhub-crypto/SKILL.md). It teaches any SKILL.md-compatible agent (Claude Code and others) when to reach for CipherHUB and how to call it — either by registering the MCP server or with plain HTTP.
+
+Install with the skills CLI:
+
+```bash
+npx skills add https://github.com/bowenerchen/CipherHUB-MCP-Server/tree/main/skills/cipherhub-crypto -g
+```
+
+Claude Code plugin marketplace:
+
+```bash
+claude plugin marketplace add bowenerchen/CipherHUB-MCP-Server
+claude plugin install cipherhub-crypto@cipherhub
+```
+
+Manual copy:
 
 ```bash
 cp -r skills/cipherhub-crypto ~/.claude/skills/
 ```
+
+The blog serves a byte-identical copy at `https://cipherhub.cloud/.well-known/agent-skills/cipherhub-crypto/SKILL.md` and registers it in the Agent Skills index with a SHA-256 digest. Whenever `SKILL.md` changes, replace the copy under the blog repository's `static/.well-known/agent-skills/cipherhub-crypto/` and update the `digest` field in `static/.well-known/agent-skills/index.json` within the same edit, otherwise the published digest no longer matches the file.
 
 ## Client Configuration
 
@@ -236,8 +269,12 @@ Use any MCP-compatible client with the endpoint URL.
 
 ## API Documentation
 
+- **Server Card**: https://tools.cipherhub.cloud/cipherhub/mcp/server-card
+- **AI Catalog**: https://cipherhub.cloud/.well-known/ai-catalog.json
+- **Agent Skills index**: https://cipherhub.cloud/.well-known/agent-skills/index.json
 - **OpenAPI**: https://tools.cipherhub.cloud/.well-known/openapi.yaml
 - **llms.txt**: https://tools.cipherhub.cloud/llms.txt
+- **Registry manifest**: [server.json](server.json)
 
 ## Web Interface
 
