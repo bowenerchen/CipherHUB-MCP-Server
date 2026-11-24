@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/license/mit)
 [![Tools](https://img.shields.io/badge/Tools-55-orange)](#tools)
 [![Blog](https://img.shields.io/badge/Blog-cipherhub.cloud-8A2BE2)](https://cipherhub.cloud)
+[![mcptry](https://mcptry.com/badge/io.github.bowenerchen/cipherhub)](https://mcptry.com/servers/io.github.bowenerchen/cipherhub)
 
 <a href="https://mcprush.com/to/cipherhub-cryptography-toolkit-mcp?ref=badge"><img width="380" height="200" src="https://mcprush.com/badge/cipherhub-cryptography-toolkit-mcp/card.svg" alt="CipherHUB Cryptography Toolkit MCP server" /></a>
 
