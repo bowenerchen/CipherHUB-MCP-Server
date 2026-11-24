@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.bowenerchen/cipherhub",
   "title": "CipherHUB Cryptography Toolkit",
-  "description": "Production cryptography toolkit with 55 MCP tools: hashing, encryption, signatures, PQC, X.509, CMS and COSE.",
+  "description": "55-tool cryptography MCP server: hashing, encryption, signatures, PQC, X.509, CMS and COSE.",
   "version": "1.16.4",
   "websiteUrl": "https://tools.cipherhub.cloud",
   "icons": [
