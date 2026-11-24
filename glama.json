@@ -5,7 +5,7 @@
   "description": "Production-grade cryptography toolkit - 57 cryptographic operations, 55 exposed as MCP tools. Covers AES (CBC/GCM/CTR/XTS), ChaCha20-Poly1305, RSA, ECC, SM2/SM3/SM4/SM9, ZUC, ML-KEM, ML-DSA, hybrid KEX, X.509 certificates, and CMS/COSE/CBOR/ASN.1 structured messages. Interoperability verified with AWS KMS (70/70), Tencent Cloud KMS (39/39), and OpenSSL 3.6 (148/154).",
   "type": "mcp_server",
   "status": "stable",
-  "version": "1.13.2",
+  "version": "1.16.4",
   "tools": 55,
   "prompts": 6,
   "resources": 8,
